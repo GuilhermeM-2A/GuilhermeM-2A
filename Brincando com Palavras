@@ -1,0 +1,34 @@
+
+let palavra
+
+
+
+function setup() {
+  createCanvas(400, 400);
+  palavra = palavraAleatoria();
+}
+
+function draw() {
+  background(158);
+  fill(0);
+  textSize(64);
+  textAlign(CENTER, CENTER);
+  mousex();
+  palavraAleatoria();
+  
+}
+  
+function mousex(){
+  let maximo = width;
+  let minimo = 0;
+  let quantidade = map(mouseX, 0, width, 1, palavra.length);
+  let parcial = palavra.substring(0,quantidade);
+  text(parcial,200,200);
+}
+
+function palavraAleatoria(){
+  
+  let palavras = ["Guilherme", "Guerreiro", "Garfield", "Galinha"];
+  
+  return random(palavras);  
+}
