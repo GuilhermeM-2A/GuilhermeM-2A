@@ -1,34 +1,47 @@
-
-let palavra
-
-
+let palavra;
 
 function setup() {
   createCanvas(400, 400);
+
   palavra = palavraAleatoria();
+  
+}
+
+function palavraAleatoria() {
+  
+  let palavras = ["Guilherme", "Girafa", "Guerreiro", "Goiaba", "Galinha", "Gorilla", "Granada", "Gaivota", "Gavião", "Gaborone", "Goiás", "Gelo", "Geraldo", "Germânio", "Guaraná", "Garoto"];
+  
+  return random(palavras);
+}
+
+function inicializaCores() {
+  background(158);
+  fill("#156F97");
+  textSize(48);
+  textAlign(CENTER, CENTER);
+}
+
+function palavraParcial(minimo, maximo) {
+  let quantidade = map(mouseX, minimo, maximo, 1, palavra.length);
+  let parcial = palavra.substring(0, quantidade);
+  return parcial;
 }
 
 function draw() {
-  background(158);
-  fill(0);
-  textSize(64);
-  textAlign(CENTER, CENTER);
-  mousex();
-  palavraAleatoria();
   
-}
   
-function mousex(){
-  let maximo = width;
-  let minimo = 0;
-  let quantidade = map(mouseX, 0, width, 1, palavra.length);
-  let parcial = palavra.substring(0,quantidade);
-  text(parcial,200,200);
+  mouse();
+  inicializaCores();
+
+  let texto = palavraParcial(0, width);
+    
+  text(texto, 200, 200);
+  
+  
 }
 
-function palavraAleatoria(){
-  
-  let palavras = ["Guilherme", "Guerreiro", "Garfield", "Galinha"];
-  
-  return random(palavras);  
+function mouse(){
+  if(mouseX <= 20){
+    setup(palavraAleatoria)
+  }
 }
